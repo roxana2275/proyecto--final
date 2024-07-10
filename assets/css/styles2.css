@@ -1,0 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Crea 10 columnas */
+    gap: 10px; /* Espacio entre las celdas */
+    width: 100%;
+    max-width: 800px; /* Ajusta el ancho máximo de la cuadrícula */
+    margin: auto;
+}
+.grid-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
+    transition: background-color 0.3s; /* Suaviza la transición de color */
+}
+.grid-item.selected {
+    background-color: #4CAF50; /* Color de fondo cuando está seleccionado */
+}

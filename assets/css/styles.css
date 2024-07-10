@@ -1,0 +1,21 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Crea 10 columnas */
+  gap: 10px; /* Espacio entre las celdas */
+  width: 100%;
+  max-width: 800px; /* Ajusta el ancho máximo de la cuadrícula */
+  margin: auto;
+}
+.grid-item {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+}
+.item-checkbox {
+  margin-right: 5px; /* Espacio entre el checkbox y el número */
+}

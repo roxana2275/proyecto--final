@@ -1,0 +1,9 @@
+@import './color.css';
+
+.terminos-container{
+    background-color:var(--negro) ;
+}
+
+.terminos p{
+    color:white;
+}

@@ -1,0 +1,90 @@
+/* HEADER */
+
+.hero{
+    display: flex;
+    background-image: url(../../img/fondo/Final-banner-min.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+    height: 50vh;
+}
+
+
+.descripcion h2 {
+    font-family: "Comic Neue", sans-serif;
+    font-size: 100px;
+    color:aliceblue;
+    text-align: center;
+}
+
+.descripcion p{
+    font-family: "Comic Neue", sans-serif;
+    font-size: 33px;
+    color: aliceblue;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 1.8rem 1.4rem 2.8rem;
+}
+
+.funciones {
+    background: white;
+}
+
+.funciones h3 {
+    font-family: "Comic Neue", sans-serif;
+    font-size: 70px;
+    color: black;
+    text-align: center;
+}
+
+.funciones__menu{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.funciones__item {
+    max-width: 30vh;
+    height: 135px;
+    margin: 50px;
+    padding: 10px;
+    background: #EEE;
+    border-radius: 5px;
+    box-shadow: 10px 10px #222831;
+}
+
+.funciones__item h4 {
+    font-family: "Comic Neue", sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.funciones__item p {
+    font-family: "Comic Neue", sans-serif;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media(max-width:768px){
+    .descripcion h2{
+        font-size: 60px;
+    }
+    .descripcion p{
+        font-size: 25px;
+    }
+    .funciones h3{
+        font-size: 40px;
+    }
+    .funciones__menu{
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+

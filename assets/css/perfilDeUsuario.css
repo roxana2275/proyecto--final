@@ -1,0 +1,208 @@
+@import './color.css';
+.app{
+  background-color: var(--gris);
+  font-family: 'Acme';
+  letter-spacing: 1px;
+
+}
+.container--perfil{
+  position: relative;
+  padding: 20px;
+  overflow: hidden; 
+  font-size: large;
+}
+
+.container--perfil::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("../img/fondo/pngwing.png") no-repeat center center;
+  background-size: cover;
+  opacity: 0.5; 
+  z-index: -1; 
+  
+}
+.perfil--titulo{
+  color: var(--naranja);
+  text-shadow: 2px 2px var(--negro);
+  font-size:3rem;
+  margin-left: 50px;
+}
+.perfil{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.perfil--datos{
+  flex: 1; 
+  box-sizing: border-box;
+}
+.item-card-informacionContacto-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.card-pefil-img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.card-pefil-img-container img {
+  display: block;
+  border-radius: 30px;
+}
+
+.edit-img-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.edit-img-btn i {
+  font-size: 16px;
+}
+.button-container{
+  display: flex;
+  flex-direction: column;
+}
+  .perfil--datos--usuario, 
+  .perfil--publicaciones, 
+  .perfil--mensajes, 
+  .perfil--datos--domicilio{
+    display: flex;
+    flex-direction: column;
+    color: var(--blanco);
+    min-width: 280px;
+    margin: 50px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 2px 8px 0px rgb(178, 178, 178);
+    background-color: var(--negro);
+
+  }
+
+  .perfil--publicaciones, 
+  .perfil--mensajes{
+    overflow-x:auto;
+  }
+
+  .perfil--publicaciones--lista, 
+  .perfil--mensajes--lista{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .contenedor--titulo--publicaciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right:50px ;
+
+  }
+  .perfil--datos--usuario--img{
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 8px 0px rgb(54, 54, 54);
+    background-color: transparent;
+  }
+  .perfil--datos--usuario--button, 
+  .perfil--publicaciones--button{
+    background-color: var(--gris);
+    color:var(--blanco);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 10rem;
+    font-family: 'Acme';
+    font-size: large;
+
+  }
+
+  .perfil--datos--usuario--button:hover, 
+  .perfil--publicaciones--button:hover{
+    font-size: 17px;
+    color: var(--naranja);
+    text-decoration: none;
+  }
+  .perfil--publicaciones--lista--table th, 
+  .perfil--mensajes--lista--table th{
+    background-color: rgba(253, 112, 20, 0.3); 
+    box-shadow: 0px 2px 8px 0px var(--naranja);
+    padding: 1rem;
+
+  }
+
+  .perfil--publicaciones--lista--table td,
+  .perfil--mensajes--lista--table td{
+    box-shadow: 0px 2px 8px 0px var(--naranja);
+    background-color: transparent;
+    padding: 1rem;
+  }
+  .perfil--publicaciones--lista--imagen img{
+    height: 3rem !important;
+    width: auto; /* Mantén la proporción de la imagen */
+  }
+  @media screen and (max-width:960px) {
+    .item-card-informacionContacto-container{
+      font-display: flex;
+      flex-direction: column;
+    }
+    .button-container{
+      font-display: flex;
+      flex-direction: row;
+    }
+
+  }
+
+  @media screen and (max-width: 820px) {   
+
+    .perfil--datos--usuario,
+    .perfil--publicaciones,
+    .perfil--mensajes{
+      margin: 30px;
+      padding: 10px;
+    }
+ 
+  }
+  @media screen and (max-width: 740px) {   
+
+    .perfil--datos--usuario,
+    .perfil--publicaciones,
+    .perfil--mensajes{
+      margin: 15px;
+      padding: 5px;
+    }
+  
+  }
+
+  @media screen and (max-width: 680px) {   
+
+    .perfil--datos--usuario,
+    .perfil--publicaciones,
+    .perfil--mensajes{
+      margin: 3px;
+      padding: 3px;
+    }
+    .perfil{
+     flex-direction: column;
+    }
+  
+  }
+  @media screen and (max-width: 570px) {   
+
+  .button-container{
+    font-display: flex;
+    flex-direction: column;
+  }
+}

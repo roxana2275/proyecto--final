@@ -1,0 +1,121 @@
+@import './color.css';
+
+.contenedor--formulario {
+    display: flex;
+    flex-direction: column;
+}
+.contenedor--contacto--borde1{
+    background-color: var(--naranja);
+    padding: 0.1rem;
+    margin: 2rem;
+    border-radius: 2rem;
+
+}
+.contenedor--contacto--borde2{
+    background-color: var(--negro);
+    padding: 0.1rem;
+    margin: 2rem;
+    border-radius: 2rem;
+}
+.contenedor--contacto--principal {
+    background-color: var(--naranja);
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.contenedor--contacto--principal--titulo{
+    color:var(--gris);
+    margin-bottom:1rem;
+}
+.contenedor--formulario--fila {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.contacto--form--input, 
+.contacto--form--select,
+.contacto--form--textarea,
+.contacto--form--file {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 3px solid #555;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--blanco);
+    margin-bottom: 2rem;
+    margin-right: 0.5rem;
+}
+.contacto--form--input--estrella{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-bottom: 2rem;
+    margin-right: 0.5rem;
+}
+.star {
+    margin-left: 1rem;
+    font-size: 20px;
+    color: var(--negrp);
+    transition: color 0.3s;
+    cursor:pointer;
+}
+.star:hover,
+.star.checked{
+     color:gold;
+}
+
+.contenedor--formulario--button {
+    background-color: var(--gris);
+    color: var(--blanco);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 10rem;
+    font-family: 'Acme';
+    font-size: large;
+    margin-top: 2rem;
+    box-shadow: 0px 2px 8px 0px var(--blanco);
+}
+
+.contenedor--formulario--button:hover {
+    font-size: 25px;
+    color: var(--naranja);
+    text-decoration: none;
+}
+
+.start {
+    padding: 1rem;
+}
+
+
+@media screen and (max-width: 955px) {
+
+    .contenedor--formulario--fila {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .contenedor--contacto--borde1,
+    .contenedor--contacto--borde2 {
+        margin: 0rem;
+        padding: 0rem;
+    }
+    .star {
+        margin-left: 0.5rem;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .contacto--form--input--estrella{
+        display: flex;
+        flex-direction: column;
+    }
+}
