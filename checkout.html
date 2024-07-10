@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Figuriando</title>
+    <link rel="stylesheet" href="/assets/css/checkout.css">
+    <link href="/assets/css/menu.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/97bc4f541b.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo/favicon.ico">
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+</head>
+<body>
+    <header class="encabezado" id="encabezado">
+    </header>
+    <div class="padre">
+        <article class="articulo">
+            <form class="semicontenedor" name="formulario" action="show-data.html" target="_blank">
+              <br>
+                <h2>Selecciona forma de pago</h2>
+                
+                <br>
+                <div class="selectmedio"  id="opciones">                    
+                    <input type="radio" name="opc" value="1" onchange="mostrar(this.value);"> Efectivo contra entrega      
+                    <i class="fa-solid fa-hand-holding-dollar" style="font-size: 24px;"></i>
+                    <i class="fa-solid fa-boxes-packing" style="font-size: 24px;"></i> 
+                    <br><br>
+                    <input type="radio" name="opc" value="2" onchange="mostrar(this.value);"> Tarjeta de Débito o Crédito   
+                    <i class="fa-regular fa-credit-card" style="font-size: 24px;"></i>
+                    <br><br>
+                    <input type="radio" name="opc" value="3" onchange="mostrar(this.value);"> Mercado Pago   
+                    <i class="fa-solid fa-money-bill-transfer" style="font-size: 24px;"></i>
+                    <br><br>
+                    <input type="radio" name="opc" value="4" onchange="mostrar(this.value);"> Transferencia bancaria  
+                    <i class="fa-solid fa-money-bill-transfer" style="font-size: 24px;"></i>
+                  </div>
+                  <br>
+                  <div class="form-group" id="efectivo" style="display:none;">
+                   <p>Si deseas pagar en efectivo contra entrega, te contactaras con el vendedor <br>
+                     para coordinar el encuentro luego de confirmar. </p>
+                  <br>
+                  </div>
+                  <div class="form-group" id="tarjeta" style="display:none;">
+                    <label>Número de tarjeta</label>
+                    <input type="text" id="cardnumber" name="tarjeta" minlength="16" maxlength="16" size="16" >
+                    <br><br>
+                    <label>Nombre y apellido</label>
+                    <input  type="text" id="name" name="nombre" size="30">
+                    <br><br>
+                    <label>Fecha de vencimiento</label>                  
+                    <input  type="month" id="fechavenc" name="fecha" size= "8">
+                    <label>Codigo de seguridad</label>
+                    <input type="text" id="codigo" name="codigo" minlength="3" maxlength="3"  size= "4">
+                    <br><br>
+                    <label>DNI del titular de la tarjeta</label>                    
+                    <input type="text"  name="dni" id="dni" minlength="8" maxlength="8">
+                    <br><br>
+                  </div>
+                  <div class= "form-group" id="mercadopago" style="display:none;">
+                    <label>Utiliza el siguiente alias para abonar con Mercadopago:</label>
+                    <input type= "text" class="form-control" name="mercadopago" disabled><br>
+                    <label>Seras contactado con el vendedor luego de confirmar.</label>
+                  </div>
+                  <div class= "form-group" id="transf" style="display:none;">
+                    <label>Utiliza el siguiente CBU para abonar con transferencia banacaria:</label>
+                    <input type= "text" class="form-control" name="transf" disabled><br>
+                    <label>Seras contactado con el vendedor luego de confirmar.</label>
+                  </div>
+                  <br><br>
+                  <div class="b-center">
+                    <input  class="b-confirmar" id="btn" name="btn" type="submit" value="Confirmar">
+                    <button class="b-borrar"  type="reset"  onclick="ocultar()">Borrar datos</button>
+                  </div>
+                  <br>
+                </form> 
+        </article>
+            <aside class="aside izquierda">              
+              <div class="semicontenedor" >
+                <br>
+                <h2>Resumen de compra</h2>                
+                <br>
+                
+                <table class="subtotal">
+                  <thead>
+                    <tr>
+                      <th>Producto</th>
+                      <th>Precio</th>
+                      <th></th>                
+                    </tr>
+                  </thead>
+                  <tbody class="subtotal-body">
+
+                  </tbody>
+                  <!--                    <tr>
+                      <td>figuritas</td>
+                      <td>$ 8000</td>
+                      <td><i class="fa-regular fa-trash-can"></i></td>                
+                    </tr>
+                    <tr>
+                      <td>Muñeco<br>
+                        de colección</td>
+                      <td>$ 24000</td>
+                      <td><i class="fa-regular fa-trash-can"></i></td> 
+                    </tr>
+                    <tr>
+                      <td>Lamina</td>
+                      <td>$ 1200</td>
+                      <td><i class="fa-regular fa-trash-can"></i></td>                 
+                    </tr>
+                  </table>                  
+                  <hr>
+                  <br>
+                  <table class="total">
+                    <tr>
+                      <th>Cantidad</th>
+                      <th>Total</th>
+                    </tr>
+                    <tr>
+                      <td>14</td>
+                      <td>$ 33200</td>
+                    </tr>      -->
+        
+                  </table>
+               </div>                        
+            </aside>
+          </div>
+    <footer class="rodapie" id="footer">        
+    </footer>
+
+    <script type="module" src="/assets/js/checkout/selectivo.js"></script>
+    <script type="module" src="/assets/js/navbar/navbar.js"></script>
+    <script type="module" src="/assets/js/footer/footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+</body>
+</html>

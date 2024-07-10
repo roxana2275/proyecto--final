@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Figuriando</title>
+    <link rel="stylesheet" href="/assets/css/loginstyle.css">
+    <link href="/assets/css/menu.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo/favicon.ico">
+
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+    <!-- Enlaza Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/051ad6be67.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="encabezado" id="encabezado">
+    </header>
+
+    <div class="login-wrap">
+        <h2>Login</h2>
+
+        <form class="form" id="regIngreso">
+            <input type="text" placeholder="Usuario" name="email" />
+            <input type="password" placeholder="Contraseña" name="contrasenia" />
+            <button type="submit"> Entrar </button>
+            <a href="/registro">
+                <p> No tienes una cuenta? Registrarse </p>
+            </a>
+        </form>
+    </div>
+    <footer class="rodapie" id="footer">
+
+    </footer>
+
+    <script type="module" src="/assets/js/navbar/navbar.js"></script>
+    <script type="module" src="/assets/js/footer/footer.js"></script>
+    <script src="/assets/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+</body>
+
+</html>

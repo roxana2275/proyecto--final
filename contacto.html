@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Figuriando</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link href="./assets/css/menu.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/598504b1dd.js" crossorigin="anonymous"></script>
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="encabezado" id="encabezado">
+    </header>
+
+        <h2>Contactanos</h2>
+        <form class="list init">
+            <br>
+            <label for="validationTooltip01" class="form-label">Nombre: </label>
+            <input type="text" class="form-control" id="validationTooltip01" required>
+            <label for="validationTooltip02" class="form-label">Apellido:</label>
+            <input type="text" class="form-control" id="validationTooltip02" required>
+            <br><br>
+            <label for="validationTooltipMail" class="form-label">Email</label>
+            <input type="text" class="form-control" id="validationTooltipUsername" placeholder="tucorreo@mail.com">
+            <label for="validationTooltip03" class="form-label">Telefono:</label>
+            <input type="text" class="form-control" id="validationTooltip03" required>
+            <br><br>
+            <label for="asunto">Asunto:</label>
+            <select class="form-select" id="validationTooltip04" required>
+                <option value="reclamo">Reclamos</option>
+                <option value="sugerencia">Sugerencias</option>
+                <option value="otro">Otros</option>
+            </select>
+            <br><br>
+            <label for="mensaje">Comentarios</label>
+            <br>
+            <textarea class="mensaje" rows="10" cols="30"></textarea>
+            <br><br>
+            <label for="term" id="term">Acepto los términos y condiciones</label>
+            <input type="checkbox" name="condition" class="check" id="condition">
+            <br><br>
+            <button type="submit" value="enviar">Enviar</button>
+        </form>
+
+    <footer class="rodapie" id="footer">
+
+    </footer>
+    <script type="module">
+        import { addToCart, loadCart } from "./assets/js/carrito/carrito.js";
+        window.onload = function () {
+            loadCart();
+        };
+    </script>
+    <script type="module" src="./js/contact.js"></script>
+    <script type="module" src="assets/js/loquin/status.js"></script>
+    <script type="module" src="assets/js/navbar/navbar.js"></script>
+    <script type="module" src="assets/js/footer/footer.js"></script>
+</body>
+
+</html>

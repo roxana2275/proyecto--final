@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Figuriando</title>
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link href="/assets/css/menu.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo/favicon.ico">
+    <script src="https://kit.fontawesome.com/598504b1dd.js" crossorigin="anonymous"></script>
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="encabezado" id="encabezado">
+    </header>
+    <main>
+        <div class="hero">
+            <a class="album" href="../../productos.html">
+            </a>
+        </div>
+        <section class="descripcion"><!--Descripcion de quienes somos-->
+            <h2>Quienes Somos</h2>
+            <p>En FIGURIANDO, nos especializamos en hacer realidad la compra, venta e intercambio de una amplia variedad
+                de articulos de colección, desde: figuritas y cartas, mangas, comics y, otros objetos nuevos y usados.
+                Nos apasiona ayudarte a completar tu albúm, encontrar esa carta que falta para tu colección, o incluso
+                conseguir ese manga o cómic que tanto ansias leer.¡En FIGURIANDO, estamos para hacer que la colección
+                que tanto soñabas se haga realidad!
+                Únete a nuestra COMUNIDAD para interactuar con otros apasionados coleccionistas y siguenos en nuestras
+                redes sociales para estar al tanto de las últimas novedades y eventos.
+                ¡Descubre el fascinante mundo de las colecciones con FIGURIANDO hoy mismo!
+        </section>
+        <section class="funciones">
+            <h3>Como funciona?</h3><!--Algunas caracteristicas para entender su uso-->
+            <ul class="funciones__menu">
+                <li class="funciones__item">
+                    <h4>Crea tu cuenta</h4>
+                    <p>Ingresa, rellena el formmulario con tus datos personales y confirma desde tu correo electronico
+                    </p>
+                </li>
+                <li class="funciones__item">
+                    <h4>Publica tu aviso</h4>
+                    <p>Detalla el producto que ofreces y elige si lo intercambias o lo vendes</p>
+                </li>
+                <li class="funciones__item">
+                    <h4>Recibe propuestas</h4>
+                    <p>Recibe propuestas por email y en tu cuentas, responde a las connsultas y confirma o rechaza las
+                        propuestas</p>
+                </li>
+                <li class="funciones__item">
+                    <h4>Intercambia</h4>
+                    <p>Acuerda la forma de entrega, intercambia, vende y califica</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="rodapie" id="footer">
+
+    </footer>
+    <script type="module">
+        import { login } from '/assets/js/loquin/loquin.js';
+
+        window.onload = function() {
+            document.getElementById('login-button').addEventListener('click', login);
+        };
+    </script>
+
+    <script type="module" src="/assets/js/navbar/navbar.js"></script>
+    <script type="module" src="/assets/js/footer/footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+</body>
+
+</html>

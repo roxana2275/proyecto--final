@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Figuriando</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/contacto.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="/assets/css/menu.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/598504b1dd.js" crossorigin="anonymous"></script>
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="app">
+    <header class="encabezado" id="encabezado">
+    </header>
+    <div class="contenedor--contacto">
+        <div class="contenedor--contacto--borde1">
+
+            <div class="contenedor--contacto--borde2">
+                <div class="contenedor--contacto--principal">
+
+                    <h2 class="contenedor--contacto--principal--titulo">Mandanos un mensaje y nos pondremos en contacto
+                        cuanto antes</h2>
+                    <form class="contenedor--formulario" id="contactForm">
+
+                        <div class="contenedor--formulario--fila">
+                            <label for="validationTooltip01" class="contacto--form--label"></label>
+                            <input type="text" class="contacto--form--input" id="apellido" placeholder="Nombre"
+                                required>
+
+                            <label for="validationTooltip02" class="contacto--form--label"></label>
+                            <input type="text" class="contacto--form--input" id="nombre" placeholder="Apellido"
+                                required>
+
+                        </div>
+                        <div class="contenedor--formulario--fila">
+                            <label for="validationTooltipMail" class="contacto--form--label"></label>
+                            <input type="text" class="contacto--form--input" id="email" placeholder="tucorreo@mail.com"
+                                placeholder="email">
+
+                            <label for="validationTooltip03" class="contacto--form--label"></label>
+                            <input type="number" class="contacto--form--input" id="telefono" placeholder="011 1234 5678"
+                                required>
+                        </div>
+
+                        <div class="contenedor--formulario--fila">
+                            <select class="contacto--form--input" id="validationTooltip04" required>
+                                <option value="reclamo">Reclamos</option>
+                                <option value="sugerencia">Sugerencias</option>
+                                <option value="otro">Otros</option>
+                            </select>
+                            <div class="contacto--form--input--estrella">
+                                <label for="rating" class="contacto--form--label">Calificación:</label>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill star" data-rating="1"></i>
+                                    <i class="bi bi-star-fill star" data-rating="2"></i>
+                                    <i class="bi bi-star-fill star" data-rating="3"></i>
+                                    <i class="bi bi-star-fill star" data-rating="4"></i>
+                                    <i class="bi bi-star-fill star" data-rating="5"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contenedor--formulario--fila">
+                            <label for="mensaje" class="contacto--form--label"></label>
+                            <textarea class="contacto--form--textarea" id="mensaje" rows="10" cols="30"
+                                placeholder="Ingrese su comentario"></textarea>
+                        </div>
+                        <div class="contenedor--formulario--fila">
+                            
+
+                            <div>
+                                <input type="checkbox" name="condition" class="contacto--form--check" id="condition">
+                                <label for="term" id="condition"><a href="/terminosYcondiciones" target="_blank">Acepto
+                                        los términos y condiciones</a></label>
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" value="enviar" class="contenedor--formulario--button">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="rodapie" id="footer">
+
+    </footer>
+
+
+    <script type="module" src="assets/js/navbar/navbar.js"></script>
+    <script type="module" src="assets/js/footer/footer.js"></script>
+    <script src="/assets/contacto.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+</body>
+
+</html>

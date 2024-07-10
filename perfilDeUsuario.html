@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Figuriando</title>
+    <link href="/assets/css/menu.css" rel="stylesheet">
+    <link href="/assets/css/perfilDeUsuario.css" rel="stylesheet">
+    <link href="/assets/css/modal.css" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo/favicon.ico">
+
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+    <!-- Enlaza Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/051ad6be67.js" crossorigin="anonymous"></script>
+
+    <!-- Enlaza Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+</head>
+
+<body class="app">
+    <header class="encabezado" id="encabezado">
+    </header>
+    <main class="container--perfil">
+        <h3 class="perfil--titulo">Datos personales</h3>
+
+        <div class="perfil">
+
+
+
+
+        </div>
+        <!-- Modal para editar perfil -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="editProfileForm">
+                    <h2>Editar Perfil</h2>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono" required>
+                    <label for="calle">Calle:</label>
+                    <input type="text" id="calle" name="calle" required>
+                    <label for="numero">Numero:</label>
+                    <input type="text" id="numero" name="numero" required>
+                    <label for="piso">Piso::</label>
+                    <input type="text" id="piso" name="piso">
+                    <label for="departamento">Departamento:</label>
+                    <input type="text" id="departamento" name="departamento">
+                    <label for="localidad">Localidad:</label>
+                    <input type="text" id="localidad" name="localidad" required>
+                    <button type="submit" class="modalButton">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+        
+
+        <!-- Formulario para modificar contraseña (inicialmente oculto) -->
+        <div id="modalModificarContraseña" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Cambiar Contraseña</h2>
+                <form id="changePasswordForm">
+                    <label for="newPassword">Nueva Contraseña:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                    <br>
+                    <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                    <button type="submit" class="perfil--datos--usuario--button">Cambiar Contraseña</button>
+                </form>
+            </div>
+        </div>
+
+        <!--Formulario para cambio de imagen-->
+        <div class="contenedor--titulo--publicaciones">
+            <h3 class="perfil--titulo">Publicaciones</h3>
+            <button class="perfil--datos--usuario--button">Nueva Puclicación</button>
+
+        </div>
+        <div class="perfil--publicaciones">
+            <div class="perfil--publicaciones--lista">
+
+                <table class="perfil--publicaciones--lista--table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Titulo</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="perfil--publicaciones--lista--table--body">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <h3 class="perfil--titulo">Mensajes</h3>
+        <div class="perfil--mensajes">
+            <table class="perfil--mensajes--lista--table">
+                <thead>
+                    <tr>
+                        <th>Publicacion</th>
+                        <th>Consulta</th>
+                        <th>Respuesta</th>
+                        <th>Enviar Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody class="perfil--mensajes--lista-tbody">
+                   
+            </table>
+        </div>
+
+    </main>
+    <footer class="rodapie" id="footer">
+
+    </footer>
+    <!--SCRIPTS-->
+
+    <script type="module" src="/assets/perfil.js"></script>
+    <script type="module" src="/assets/js/navbar/navbar.js"></script>
+    <script type="module" src="/assets/js/footer/footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+</body>
+
+</html>
