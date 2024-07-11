@@ -25,11 +25,13 @@ const crearCarrito = (req, res) => {
     const { usuario, estado } = req.body;
     const authenticatedUserId = usuario;
 
+
     if (!authenticatedUserId) {
         return res.status(403).json({ error: 'Acceso denegado' });
     }
 
     obtenerCarritoPendiente(authenticatedUserId, (err, carritoIdExistente) => {
+
         if (err) {
             return res.status(500).json({ error: "Error al verificar carrito existente " + err.message });
         }
@@ -40,7 +42,7 @@ const crearCarrito = (req, res) => {
             const fecha = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
 
             const insertQuery = 'INSERT INTO carrito (usuarios_id, fecha, estado) VALUES (?, ?, ?)';
-            db.query(insertQuery, [usuario, fecha, estado], (err, result) => {
+            db.query(insertQuery, [usuario, fecha, 0], (err, result) => {
                 if (err) {
                     return res.status(500).json({ error: "Error al guardar en la base " + err.message });
                 }

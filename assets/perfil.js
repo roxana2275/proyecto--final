@@ -12,8 +12,12 @@ async function verificarUsuarioAutenticado() {
   try {
     const token = localStorage.getItem("authToken");
     if (!token) {
-      console.error("No hay token en localStorage perfil.js");
-      throw new Error("No esta logueado");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text:'No esta logueado',
+        showConfirmButton: true
+    });
     }
     const response = await fetch(`/api/perfilDeUsuario/${id}`, {
       headers: {
@@ -22,17 +26,23 @@ async function verificarUsuarioAutenticado() {
     });
 
     if (!response.ok) {
-      console.error(
-        "No se encontro token en local storage"
-      );
-      throw new Error("Error en la coneccion");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text:'No esta logueado',
+        showConfirmButton: true
+    });
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error al obtener datos:", error);
-    alert("Error al cargar el perfil");
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text:error,
+      showConfirmButton: true
+  });
     window.location.href = "/";
   }
 }
@@ -47,7 +57,6 @@ verificarUsuarioAutenticado().then((data) => {
 });
 
 export function crearTarjetaPerfil(data) {
-  console.log(data)
   let datos = document.querySelector(".perfil");
   datos.innerHTML = `
     <div class="perfil--datos">
@@ -109,10 +118,25 @@ export function crearTarjetaPerfil(data) {
       })
       .then(() => {
         localStorage.removeItem("authToken");
+        Swal.fire({
+          icon: 'success',
+          title: 'Formulario enviado',
+          text: 'Usuario dado de baja',
+          showConfirmButton: false,
+          timer: 1500
+      });
         window.location.href = "/";
       })
 
-      .catch((error) => console.error(error));
+      .catch((error) => {
+     
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text:error,
+          showConfirmButton: true
+      });
+      });
   };
 
   document.getElementById("editBtn").onclick = function () {
@@ -167,7 +191,12 @@ export function crearTarjetaPerfil(data) {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Error en al coneccion',
+            showConfirmButton: true
+        });
         }
         return response.json();
       })
@@ -179,17 +208,32 @@ export function crearTarjetaPerfil(data) {
         })
           .then((response) => {
             if (!response.ok) {
-              throw new Error("Network response was not ok");
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text:'Error en la coneccion',
+                showConfirmButton: true
+            });
             }
             return response.json();
           })
           .then((data) => {
             crearTarjetaPerfil(data);
           })
-          .catch((error) => console.error("Error fetching data:", error));
+          .catch((error) => Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:error,
+            showConfirmButton: true
+        }));
         document.getElementById("editModal").style.display = "none";
       })
-      .catch((error) => console.error("Error updating profile:", error));
+      .catch((error) =>  Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text:error,
+        showConfirmButton: true
+    }));
   };
 
   document.getElementById("imageUploadForm").addEventListener("submit", async function (event) {
@@ -201,14 +245,34 @@ export function crearTarjetaPerfil(data) {
           body: formData,
         });
         if (response.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Formulario enviado',
+            text: 'Imagen actualizada',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
           window.location.reload();
+        });
           
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Error al subir la imagen',
+            showConfirmButton: true
+        }).then(() => {
           window.location.reload();
-          console.error("Error al subir la imagen");
+        });
         }
+          
       } catch (error) {
-        console.error("Error en la solicitud de subida de imagen:", error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text:error,
+          showConfirmButton: true
+      });
       }
     });
 
@@ -236,7 +300,12 @@ export function crearTarjetaPerfil(data) {
     const confirmPassword = document.getElementById("confirmPassword").value;
 
     if (newPassword !== confirmPassword) {
-      alert("Las nuevas contrasenias no coinciden");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text:'Las nuevas contraseñas no coinciden',
+        showConfirmButton: true
+    });
       return;
     }
 
@@ -251,12 +320,23 @@ export function crearTarjetaPerfil(data) {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Error en al coneccion ',
+            showConfirmButton: true
+        });
         }
         return response.json();
       })
       .then((data) => {
-        alert("Contrasenia cambiada exitosamente");
+        Swal.fire({
+            icon: 'success',
+            title: 'Formulario enviado',
+            text: 'Contraseñia modificada',
+            showConfirmButton: false,
+            timer: 1500
+        });
         document.getElementById("modalModificarContrasenia").style.display =
           "none";
       })
@@ -296,12 +376,29 @@ export function publicacionesPerfil(data) {
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error("Error en el servidor");
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text:'Error en el servidor',
+              showConfirmButton: true
+          });
           } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text:'Error al borrar la publicacion',
+              showConfirmButton: true
+          }).then(() => {
             window.location.reload();
+          });
           }
         })
-        .catch((error) => console.error(error));
+        .catch((error) => Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text:error,
+          showConfirmButton: true
+      }));
     };
   });
 }
@@ -343,14 +440,12 @@ export function recibidosPerfil(data) {
   }
 }
 
-// Responder mensaje
 document.addEventListener('click', async event => {
   if (event.target && event.target.className.includes('fa-reply')) {
     const icon = event.target;
     const mensajeId = icon.getAttribute("data-mensaje-id");
     const userId = await verificarUsuarioAutenticado();
 
-    // Mostrar modal para responder mensaje
     const modal = document.getElementById("replyModal");
     modal.style.display = "block";
 
@@ -378,21 +473,38 @@ document.addEventListener('click', async event => {
         });
 
         if (response.ok) {
-          console.log("Respuesta enviada correctamente");
+          Swal.fire({
+            icon: 'success',
+            title: 'Formulario enviado',
+            text: 'Respuesta enviada correctamente',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
           modal.style.display = "none";
           window.location.reload();
+        });
+          
 
         } else {
-          console.error("Error al enviar la respuesta");
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Error en el envio',
+            showConfirmButton: true
+        });
         }
       } catch (error) {
-        console.error("Error:", error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text:error,
+          showConfirmButton: true
+      });
       }
     };
   }
 });
 
-// Cerrar modales al hacer clic en el botón de cerrar
 document.querySelectorAll(".close").forEach(btn => {
   btn.onclick = function() {
     btn.closest(".modal").style.display = "none";

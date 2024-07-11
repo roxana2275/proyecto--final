@@ -19,15 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (response.ok) {
-                alert(result.message); 
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Formulario enviado',
+                    text: 'Usuario dado de alta',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 window.location.href = `/`;
 
             } else {
-                alert(result.error); 
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text:'Error al registrarse',
+                    showConfirmButton: true
+                });
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Error al registrar el usuario');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text:error,
+                showConfirmButton: true
+            });
         }
     });
 });

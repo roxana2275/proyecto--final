@@ -1,5 +1,4 @@
 const token = localStorage.getItem("authToken");
-console.log(token);
 
 if (!token) {
   alert("Usuario no autenticado");
@@ -20,7 +19,12 @@ contactForm.addEventListener('submit', async (event) => {
     const usuario_id = decodedToken.userId;
 
     if (!tipo_producto || !titulo || !cantidad || !precio || !imagen) {
-        alert('Por favor completa todos los campos del formulario.');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Por favor complete todos los campos',
+            showConfirmButton: true
+        });
         return;
     }
 
@@ -43,14 +47,29 @@ contactForm.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             const data = await response.json();
-            alert('Publicación exitosa');
+            Swal.fire({
+                icon: 'success',
+                title: 'Formulario enviado',
+                text: 'Publicacion exitosa',
+                showConfirmButton: false,
+                timer: 1500
+            });
             window.location.href = `/perfilDeUsuario/${usuario_id}`;
         } else {
-            throw new Error('Error al subir la publicación');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text:'Error al subir la publicacion',
+                showConfirmButton: true
+            });;
         }
     } catch (error) {
-        console.error('Error:', error);
-        alert('Hubo un error al enviar el formulario');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'error',
+            showConfirmButton: true
+        });
     }
 });
 

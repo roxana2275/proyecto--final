@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 profileLink.style.display = 'block';
                 profileLink.href = `/perfilDeUsuario/${decodedToken.userId}`;
 
-                // Obtener y mostrar el carrito del usuario autenticado
                 fetch(`/api/carrito/usuario/${decodedToken.userId}`, {
                     headers: {
                         "Authorization": `Bearer ${token}`

@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 const errorText = await response.text();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorText,
+                    showConfirmButton: true
+                });
                 throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
             }
             const result = await response.json();
@@ -30,8 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(result.error);
             }
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error al ingresar',
+                showConfirmButton: true
+            });
             console.error('Error:', error);
-            alert(`Error al ingresar: ${error.message}`);
         }
     });
 });

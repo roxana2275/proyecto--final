@@ -248,18 +248,13 @@ const modificarContrasenia = async (req, res) => {
     const sql = "UPDATE usuarios SET contrasenia = ? WHERE usuario_id = ?";
     db.query(sql, [hashedPassword, usuarioId], (err, result) => {
       if (err) {
-        console.error(
-          "Error en la base de datos al modificar contraseña:",
-          err
-        );
-        return res
+          return res
           .status(500)
           .json({ error: "Error en la base de datos al modificar contraseña" });
       }
       res.json({ message: "Contraseña modificada correctamente" });
     });
   } catch (error) {
-    console.error("Error:", error);
     res.status(500).json({ error: "Error al modificar la contraseña" });
   }
 };
@@ -275,10 +270,6 @@ const bajaUsuarioById = async (req, res) => {
 
     db.query(sql, [usuarioId], (err, result) => {
       if (err) {
-        console.error(
-          "Error en la base de datos al dar la baja al usuario",
-          err
-        );
         return res
           .status(500)
           .json({ error: "Error en la base de datos al dar la baja" });
@@ -286,7 +277,6 @@ const bajaUsuarioById = async (req, res) => {
       res.json({ menssage: "Usuario dado de baja" });
     });
   } catch (error) {
-    console.error("Error:", error);
     res.status(500).json({ error: "Error al cargar la baja" });
   }
 };
@@ -295,7 +285,6 @@ const nuevaPublicacion = (req, res) => {
   const { tipo_producto, titulo, cantidad, precio, usuario_id } = req.body;
   const filename = req.file.filename;
 
-  // Verificar que los campos no sean undefined
   if (!tipo_producto || !titulo || !cantidad || !precio || !usuario_id) {
     return res.status(400).json({ error: "Faltan campos en el formulario" });
   }
@@ -348,7 +337,6 @@ const nuevaPublicacion = (req, res) => {
     [usuario_id_p, producto, titulo, precio_p, cantidad_p, estado],
     (err, resultPub) => {
       if (err) {
-        console.log(err);
         return res
           .status(500)
           .json({ error: "Error al guardar la publicación: " + err.message });
@@ -359,7 +347,6 @@ const nuevaPublicacion = (req, res) => {
         [newFilename, nuevaPublicacionId, estado, tipoImagenId, extension],
         (err, resultImg) => {
           if (err) {
-            console.log(err);
             return res
               .status(500)
               .json({
@@ -374,8 +361,7 @@ const nuevaPublicacion = (req, res) => {
             [nuevaImagenId, nuevaPublicacionId],
             (err, resultUpdate) => {
               if (err) {
-                console.log(err);
-                return res
+                 return res
                   .status(500)
                   .json({
                     error:

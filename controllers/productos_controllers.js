@@ -20,7 +20,6 @@ const getAllProducts = (req, res) => {
 
     db.query(sql, (err, results) => {
         if (err) {
-            console.error('Error fetching products:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
 
@@ -33,7 +32,6 @@ const getProductByType = (req, res) => {
     const sql = 'SELECT producto.tipo, publicaciones.publicacion_id, publicaciones.titulo, publicaciones.precio, publicaciones.cantidad, imagenes.nombre, imagenes.extension,publicaciones.usuario_id FROM publicaciones INNER JOIN imagenes ON publicaciones.publicacion_id = imagenes.referencia_id INNER JOIN producto ON publicaciones.producto_id = producto.producto_id WHERE publicaciones.estado = 0 AND imagenes.tipo_imagen_id = 2 AND imagenes.estado = 0 AND producto.tipo = ?';
     db.query(sql, [titulo], (err, results) => {
         if (err) {
-            console.error(err);
             res.status(500).send('Error en la base de datos');
             return;
         }
@@ -49,7 +47,6 @@ const guardarMensaje = async (req, res) => {
 
     db.query(insertQuery, [emisor_id, receptor_id, contenido, fecha, publicacion_id], (err, results) => {
         if (err) {
-            console.error(err);
             res.status(500).send('Error en la base de datos');
             return;
         }
@@ -60,13 +57,11 @@ const guardarMensaje = async (req, res) => {
 const guardarRespuesta = async (req, res) => {
     const { mensaje_id,respuesta} = req.body;
     const fecha = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
-    console.log(mensaje_id,respuesta,fecha)
 
     const insertQuery = 'UPDATE mensajes SET respuesta = ?, fecha_respuesta= ? WHERE mensaje_id = ?';
 
     db.query(insertQuery, [respuesta,fecha,mensaje_id], (err, results) => {
         if (err) {
-            console.error(err);
             res.status(500).send('Error en la base de datos');
             return;
         }
@@ -79,7 +74,6 @@ const nuevaPublicacion = async (req,res) =>{
     const insertQery = 'INSERT INTO publicaciones(titulo,precio,cantidad,imagen) VALUES(?,?,?,?)';
     db.query(insertQery, [titulo,precio,cantidad,imagen],(err,results) =>{
         if(err){
-            console.error(err);
             res.status(500).send('Error al guardar la publicacion');
             return;
         }
@@ -94,11 +88,10 @@ const bajaPublicacion = async(req,res) =>{
     const bajaImgQuery = 'UPDATE imagenes SET estado = 1 WHERE imagenes.referencia_id = ? AND imagenes.tipo_imagen_id =2';
     db.query(bajaPubQuery,[publicacion],(err,results) =>{
         if(err){
-            console.error(err);
         }
         db.query(bajaImgQuery,[publicacion],(err,results) =>{
             if(err){
-                console.error(err)
+                res.status(500).send('Error al dar la baja en la publicacion');
             }
             res.status(201).json({message:'Publicacion borrada'});
 

@@ -23,14 +23,12 @@ const registerContacto = async (req, res) => {
         
         db.query(insertQuery, [formData.nombre, formData.apellido, formData.email, formData.telefono, tipo_de_contacto_id, formData.mensaje, formData.calificacion], (err, result) => {
             if (err) {
-                console.error(err);
                 return res.status(500).json({ error: 'Error al guardar el mensaje' });
             }
             res.status(201).json({ message: 'Mensaje enviado' });
         });
 
     } catch (error) {
-        console.error('Error:', error);
         res.status(500).json({ error: 'Error al guardar el mensaje' });
     }
 };

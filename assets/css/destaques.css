@@ -23,7 +23,7 @@
 }
 
 .destaques__principal {
-    background: url('../img/destaques/album-copa-america-974x550.png') center / cover no-repeat;
+    background: url('../img/destaques/copa.jpg') center / cover no-repeat;
     grid-column: 1 / 4;
     grid-row: 1 / 3;
 

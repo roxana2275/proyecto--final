@@ -77,12 +77,36 @@ async function addToCartClicked(event) {
       });
 
       if (cartItemsResponse.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Carrito',
+          text: 'Producto agregado',
+          showConfirmButton: false,
+          timer: 1500
+      }).then(() => {
         window.location.reload();
+      });
       } else {
-        console.error("Error al agregar el producto");
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error al cargar el producto',
+          showConfirmButton: false,
+          timer: 1500
+      }).then(() => {
+        window.location.reload();
+      });
       }
     } else {
-      console.error("Error al crear el carrito");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error al cargar el carrito',
+        showConfirmButton: false,
+        timer: 1500
+    }).then(() => {
+      window.location.reload();
+    });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -132,12 +156,33 @@ document.addEventListener('click', async event => {
         });
 
         if (response.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Mensajes',
+            text: 'Mensaje enviado',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
           modal.style.display = "none";
+        });
+          
         } else {
-          console.error("Error al enviar el mensaje");
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al enviar le mensaje',
+            showConfirmButton: false,
+            timer: 1500
+        })
         }
       } catch (error) {
-        console.error("Error:", error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error,
+          showConfirmButton: false,
+          timer: 1500
+      })
       }
     };
   }
@@ -259,5 +304,3 @@ window.onload = function () {
     })
     .catch((error) => console.error("Error al obtener datos:", error));
 };
-
-

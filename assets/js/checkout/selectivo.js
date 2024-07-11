@@ -5,7 +5,6 @@ if (!token) {
     window.location.href = "/";
 } else {
     const decodedToken = jwt_decode(token);
-    console.log(decodedToken.userId);
     cargarCarrito(decodedToken.userId, token);
 }
 
@@ -19,14 +18,25 @@ async function cargarCarrito(userId, token) {
 
         if (!response.ok) {
             const errorText = await response.text();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorText,
+                showConfirmButton: true
+            });
             throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
         }
 
         const result = await response.json();
-        console.log(result);
         carrito(result);
 
     } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error,
+            showConfirmButton: true
+        });
         console.log(error);
     }
 }
@@ -36,7 +46,6 @@ function carrito(data) {
     datos.innerHTML = "";
 
     data.forEach(item => {
-        console.log(item);
         datos.innerHTML += `
             <tr>
                 <td>${item.titulo}</td>
@@ -60,7 +69,12 @@ async function borrarProducto(carrito_items_id) {
     const token = localStorage.getItem("authToken");
 
     if (!token) {
-        alert("Usuario no autenticado");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: "Usuario no autenticado",
+            showConfirmButton: true
+        });
         window.location.href = "/";
         return;
     }
@@ -76,6 +90,12 @@ async function borrarProducto(carrito_items_id) {
 
         if (!response.ok) {
             const errorText = await response.text();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorText,
+                showConfirmButton: true
+            });
             throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
         }
 

@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="/assets/css/loginstyle.css">
         <link href="/assets/css/menu.css" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="/assets/img/logo/favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 
             <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +32,10 @@
                 <input type="text" placeholder="Correo" name="email" />
                 <input type="password" placeholder="Contraseña" name="contrasenia" />
 
-
+                <br><br>
+                <label for="term" id="term">Acepto los términos y condiciones</label>
+                <input type="checkbox" name="condition" class="check" id="condition">
+                <br><br>
                 <button type="submit"> Registrar </button>
                 <!-- <a href="#"> <p> No tienes una cuenta? Registrarse </p></a> -->
             </form>
@@ -44,6 +49,7 @@
 <script type="module" src="/assets/js/footer/footer.js"></script>
 <script src="/assets/registro.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     </body>
 </html>

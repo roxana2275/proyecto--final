@@ -12,7 +12,12 @@ contactForm.addEventListener('submit', async (event) => {
     const mensaje = document.getElementById('mensaje').value.trim();
 
     if (!nombre || !apellido || !email || !telefono || !tipo_mensaje || !mensaje) {
-        alert('Por favor completa todos los campos del formulario.');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Debe completar todos los campos',
+            showConfirmButton: true
+        });
         return;
     }
 
@@ -37,14 +42,31 @@ contactForm.addEventListener('submit', async (event) => {
 
         if (response.ok) {
             const data = await response.json();
-            alert('Mensaje enviado correctamente');
-            window.location.href = `/`;
+            Swal.fire({
+                icon: 'success',
+                title: 'Formulario enviado',
+                text: 'Mensaje enviado',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                window.location.href = `/`;
+
+              });
         } else {
-            throw new Error('Error al enviar el formulario');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text:'Error al enviar el formulario',
+                showConfirmButton: true
+            });
         }
     } catch (error) {
-        console.error('Error:', error);
-        alert('Hubo un error al enviar el formulario');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'error',
+            showConfirmButton: true
+        });
     }
 });
 
