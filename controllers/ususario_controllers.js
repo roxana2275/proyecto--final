@@ -227,6 +227,86 @@ const bajaUsuarioById = async (req,res) => {
     };
 };
 
+const nuevaPublicacion = (req, res) => {
+    const { tipo_producto, titulo, cantidad, precio, usuario_id } = req.body;
+    const filename = req.file.filename;
+
+    // Verificar que los campos no sean undefined
+    if (!tipo_producto || !titulo || !cantidad || !precio || !usuario_id) {
+        return res.status(400).json({ error: "Faltan campos en el formulario" });
+    }
+
+    const cantidad_p = parseInt(cantidad);
+    const precio_p = parseFloat(precio);
+    const usuario_id_p = parseInt(usuario_id);
+    let producto = 0;
+
+    switch (tipo_producto.toLowerCase()) {
+        case 'figuritas':
+            producto = 1;
+            break;
+        case 'albums':
+            producto = 2;
+            break;
+        case 'comics':
+            producto = 3;
+            break;
+        case 'mangas':
+            producto = 4;
+            break;
+        case 'muniecos':
+            producto = 5;
+            break;
+        case 'eventos':
+            producto = 6;
+            break;
+        default:
+            return res.status(400).json({ error: "Tipo de producto inválido" });
+    }
+
+    const extension = path.extname(filename);
+    const baseFilename = path.basename(filename, extension);
+    const newFilename = `${baseFilename}`;
+    const tipoImagenId = 2;
+    const estado = 0;
+
+    const insertPublicacion = `
+        INSERT INTO publicaciones (usuario_id, producto_id, titulo, precio, cantidad, estado, imagenes_id) 
+        VALUES (?, ?, ?, ?, ?, ?, NULL)
+    `;
+    const insertImg = `
+        INSERT INTO imagenes (nombre, referencia_id, estado, tipo_imagen_id, extension) 
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.query(insertPublicacion, [usuario_id_p, producto, titulo, precio_p, cantidad_p, estado], (err, resultPub) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "Error al guardar la publicación: " + err.message });
+        }
+        const nuevaPublicacionId = resultPub.insertId;
+        db.query(insertImg, [newFilename, nuevaPublicacionId, estado, tipoImagenId, extension], (err, resultImg) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({ error: "Error al guardar en la base de datos: " + err.message });
+            }
+            const nuevaImagenId = resultImg.insertId;
+            const updatePublicacion = 'UPDATE publicaciones SET imagenes_id = ? WHERE publicacion_id = ?';
+            db.query(updatePublicacion, [nuevaImagenId, nuevaPublicacionId], (err, resultUpdate) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).json({ error: "Error al actualizar publicación nueva: " + err.message });
+                } else {
+                    res.json({ success: true, message: 'Publicación cargada' });
+                }
+            });
+        });
+    });
+};
+
+module.exports = { nuevaPublicacion };
+
+
 module.exports = {
     getUsuarioById,
     updateUsuarioById,
@@ -236,5 +316,6 @@ module.exports = {
     bajaUsuarioById,
     formLoguin,
     formRegistro,
-    formPerfilDeUsuario
+    formPerfilDeUsuario,
+    nuevaPublicacion
 }

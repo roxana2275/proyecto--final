@@ -9,6 +9,8 @@ router.get('/api/productos/:tipo', productoController.getProductByType);
 router.get('/nuevaPublicacion',productoController.formPublicacion)
 
 router.get('/productos/:tipo', productoController.formProductoTipo);
+router.put('/productos/:id/baja',productoController.bajaPublicacion);
+
 
 router.post('/mensajes', productoController.guardarMensaje);
 

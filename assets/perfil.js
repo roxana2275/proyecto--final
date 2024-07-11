@@ -279,12 +279,32 @@ export function publicacionesPerfil(data) {
         <td>${publicacion.cantidad}</td>
         <td>${publicacion.precio}</td>
         <td>
-          <button class="perfil--publicaciones--button" onclick="actualizarPublicacion(${publicacion.publicacion_id})">Modificar</button>
-          <button class="perfil--publicaciones--button" onclick="borrarPublicacion(${publicacion.publicacion_id})">Borrar</button>
+          <button class="perfil--publicaciones--button" data-publicacion-id="${publicacion.publicacion_id}">Dar de Baja</button>
         </td>
       </tr>`;
   }
+
+  document.querySelectorAll(".perfil--publicaciones--button").forEach(button => {
+    button.onclick = function () {
+      const publicacionId = this.getAttribute("data-publicacion-id");
+      fetch(`/productos/${publicacionId}/baja`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error en el servidor");
+          } else {
+            window.location.reload();
+          }
+        })
+        .catch((error) => console.error(error));
+    };
+  });
 }
+
 
 
 export function mensajesPerfil(data) {

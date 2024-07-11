@@ -70,6 +70,26 @@ const nuevaPublicacion = async (req,res) =>{
     })
 }
 
+const bajaPublicacion = async(req,res) =>{
+    const publicacion = parseInt(req.params.id);
+
+    const bajaPubQuery = 'UPDATE publicaciones SET estado = 1 WHERE publicaciones.publicacion_id=?;';
+    const bajaImgQuery = 'UPDATE imagenes SET estado = 1 WHERE imagenes.referencia_id = ? AND imagenes.tipo_imagen_id =2';
+    db.query(bajaPubQuery,[publicacion],(err,results) =>{
+        if(err){
+            console.error(err);
+        }
+        db.query(bajaImgQuery,[publicacion],(err,results) =>{
+            if(err){
+                console.error(err)
+            }
+            res.status(201).json({message:'Publicacion borrada'});
+
+        })
+    })
+
+}
+
 
 
 module.exports = {
@@ -79,6 +99,7 @@ module.exports = {
     formProductoTipo,
     guardarMensaje,
     nuevaPublicacion,
-    formPublicacion
+    formPublicacion,
+    bajaPublicacion
     
 };

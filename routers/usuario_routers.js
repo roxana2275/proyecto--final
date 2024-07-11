@@ -3,7 +3,7 @@ const router = express.Router();
 const usuarioController = require('../controllers/ususario_controllers');
 const { upload } = require('../controllers/base_imagenes_controllers');
 const authenticateToken = require('../middlewares/authMiddlewares');
-const imagen = require('../controllers/imagen_controllers')
+const imagen = require('../controllers/imagen_controllers');
 
 
 router.get('/perfilDeUsuario/:id', usuarioController.formPerfilDeUsuario,authenticateToken);
@@ -14,6 +14,8 @@ router.post('/api/perfilDeUsuario/:id/contrasenia', authenticateToken,usuarioCon
 router.put('/api/perfilDeUsuario/:id/baja', authenticateToken,usuarioController.bajaUsuarioById);
 
 router.post('/api/perfilDeUsuario/:id/imagen', upload.single('imagen'), imagen.subirImagenUsuario);
+router.post('/nuevaPublicacion', upload.single('imagen'),usuarioController.nuevaPublicacion);
+
 
 router.get('/registro', usuarioController.formRegistro);
 router.post('/registro', usuarioController.register);
