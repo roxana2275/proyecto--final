@@ -42,6 +42,7 @@ verificarUsuarioAutenticado().then((data) => {
     crearTarjetaPerfil(data);
     publicacionesPerfil(data);
     mensajesPerfil(data);
+    recibidosPerfil(data);
   }
 });
 
@@ -318,8 +319,83 @@ export function mensajesPerfil(data) {
       <tr>
         <td>${mensaje.publicacion_id}</td>
         <td>${mensaje.contenido}</td>
-        <td>${mensaje.padre_id}</td>
-        <td><button class="perfil--publicaciones--button">Responder</button></td>
+        <td>${mensaje.fecha_envio}</td>
+        <td>${mensaje.respuesta}</td>
       </tr>`;
   }
 }
+
+export function recibidosPerfil(data) {
+  let datos = document.querySelector(
+    ".perfil--mensajes--recibidos-tbody"
+  );
+  datos.innerHTML = "";
+  for (let i = 0; i < data.respuestas.length; i++) {
+    const respuesta = data.respuestas[i];
+    datos.innerHTML += `
+      <tr>
+        <td>${respuesta.publicacion_id}</td>
+        <td>${respuesta.contenido}</td>
+        <td>${respuesta.fecha_envio}</td>
+        <td>${respuesta.respuesta}</td>
+        <td><button class="perfil--publicaciones--button fa-reply" data-mensaje-id="${respuesta.mensaje_id}"><i class="fa-solid fa-reply"></i></button></td>
+      </tr>`;
+  }
+}
+
+// Responder mensaje
+document.addEventListener('click', async event => {
+  if (event.target && event.target.className.includes('fa-reply')) {
+    const icon = event.target;
+    const mensajeId = icon.getAttribute("data-mensaje-id");
+    const userId = await verificarUsuarioAutenticado();
+
+    // Mostrar modal para responder mensaje
+    const modal = document.getElementById("replyModal");
+    modal.style.display = "block";
+
+    const sendReplyButton = document.getElementById("sendReplyButton");
+    const replyContent = document.getElementById("replyContent");
+
+    sendReplyButton.onclick = async function() {
+      const content = replyContent.value;
+      const token = localStorage.getItem("authToken");
+
+      const replyData = {
+        mensaje_id: mensajeId,
+        respuesta: content,
+        emisor_id: userId
+      };
+
+      try {
+        const response = await fetch("/respuesta", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(replyData),
+        });
+
+        if (response.ok) {
+          console.log("Respuesta enviada correctamente");
+          modal.style.display = "none";
+          window.location.reload();
+
+        } else {
+          console.error("Error al enviar la respuesta");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+  }
+});
+
+// Cerrar modales al hacer clic en el botón de cerrar
+document.querySelectorAll(".close").forEach(btn => {
+  btn.onclick = function() {
+    btn.closest(".modal").style.display = "none";
+  };
+});
+

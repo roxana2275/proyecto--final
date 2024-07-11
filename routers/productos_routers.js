@@ -13,6 +13,7 @@ router.put('/productos/:id/baja',productoController.bajaPublicacion);
 
 
 router.post('/mensajes', productoController.guardarMensaje);
+router.post('/respuesta', productoController.guardarRespuesta);
 
 router.post('/nuevaPublicacion',productoController.nuevaPublicacion)
 

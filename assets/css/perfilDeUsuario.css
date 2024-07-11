@@ -126,7 +126,23 @@
     width: 10rem;
     font-family: 'Acme';
     font-size: large;
+    text-decoration: none;
+    text-transform: center;
+  }
 
+  .contenedor--publicacion--button{
+    display: flex;
+    align-items: center;
+  }
+  .perfil--publicaciones--usuario--button{
+    background-color: var(--gris);
+    color:var(--blanco);
+    padding: 1rem;
+    width: 10rem;
+    border-radius: 0.5rem;
+    font-family: 'Acme';
+    font-size: large;
+    text-decoration: none;
   }
 
   .perfil--datos--usuario--button:hover, 

@@ -36,9 +36,6 @@
 
         <div class="perfil">
 
-
-
-
         </div>
         <!-- Modal para editar perfil -->
         <div id="editModal" class="modal">
@@ -90,9 +87,12 @@
         <!--Formulario para cambio de imagen-->
         <div class="contenedor--titulo--publicaciones">
             <h3 class="perfil--titulo">Publicaciones</h3>
-            <a class="perfil--datos--usuario--button" href="/nuevaPublicacion">Nueva Puclicación</a>
-
+            <div class="contenedor--publicacion--button">
+                <a class="perfil--publicaciones--usuario--button" href="/nuevaPublicacion">Nueva Puclicación</a>
+            </div>
         </div>
+
+        <!--Formulario de publicaciones-->
         <div class="perfil--publicaciones">
             <div class="perfil--publicaciones--lista">
 
@@ -110,22 +110,51 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-        <h3 class="perfil--titulo">Mensajes</h3>
+
+        <!--Formulario de mensajes enviados-->
+        <h3 class="perfil--titulo">Mensajes Enviados</h3>
         <div class="perfil--mensajes">
             <table class="perfil--mensajes--lista--table">
                 <thead>
                     <tr>
                         <th>Publicacion</th>
                         <th>Consulta</th>
+                        <th>Fecha</th>
+                        <th>Respuesta</th>
+                    </tr>
+                </thead>
+                <tbody class="perfil--mensajes--lista-tbody">
+                </tbody>
+            </table>
+        </div>
+
+        <!--Tabla de mensajes recibidos-->
+        <h3 class="perfil--titulo">Mensajes Recibidos</h3>
+        <div class="perfil--mensajes">
+            <table class="perfil--mensajes--lista--table">
+                <thead>
+                    <tr>
+                        <th>Publicacion</th>
+                        <th>Consulta</th>
+                        <th>Fecha</th>
                         <th>Respuesta</th>
                         <th>Enviar Mensaje</th>
                     </tr>
                 </thead>
-                <tbody class="perfil--mensajes--lista-tbody">
-                   
+                <tbody class="perfil--mensajes--recibidos-tbody">
+                </tbody>
             </table>
+        </div>
+
+        <!-- Modal para responder mensajes -->
+        <div id="replyModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Responder Mensaje</h2>
+            <textarea id="replyContent" placeholder="Escribe tu respuesta aquí..."></textarea>
+            <button id="sendReplyButton">Responder</button>
+            </div>
         </div>
 
     </main>

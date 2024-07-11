@@ -57,6 +57,23 @@ const guardarMensaje = async (req, res) => {
     });
 };
 
+const guardarRespuesta = async (req, res) => {
+    const { mensaje_id,respuesta} = req.body;
+    const fecha = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
+    console.log(mensaje_id,respuesta,fecha)
+
+    const insertQuery = 'UPDATE mensajes SET respuesta = ?, fecha_respuesta= ? WHERE mensaje_id = ?';
+
+    db.query(insertQuery, [respuesta,fecha,mensaje_id], (err, results) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error en la base de datos');
+            return;
+        }
+        res.status(201).json({ message: 'Respuesta guardado correctamente' });
+    });
+};
+
 const nuevaPublicacion = async (req,res) =>{
     const{titulo,precio,cantidad,imagen} = req.body
     const insertQery = 'INSERT INTO publicaciones(titulo,precio,cantidad,imagen) VALUES(?,?,?,?)';
@@ -100,6 +117,7 @@ module.exports = {
     guardarMensaje,
     nuevaPublicacion,
     formPublicacion,
-    bajaPublicacion
+    bajaPublicacion,
+    guardarRespuesta
     
 };
