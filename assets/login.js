@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon: 'error',
                     title: 'Error',
                     text: errorText,
-                    showConfirmButton: true
+                    showConfirmButton: true,
+                    customClass: {
+                        popup: 'custom-swal-popup'
+                      }
                 });
                 throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
             }
@@ -40,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon: 'error',
                 title: 'Error',
                 text: 'Error al ingresar',
-                showConfirmButton: true
+                showConfirmButton: true,
+                customClass: {
+                    popup: 'custom-swal-popup'
+                  }
             });
             console.error('Error:', error);
         }

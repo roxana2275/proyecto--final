@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     title: 'Formulario enviado',
                     text: 'Usuario dado de alta',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1500,
+                    customClass: {
+                        popup: 'custom-swal-popup'
+                      }
                 });
                 window.location.href = `/`;
 
@@ -33,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon: 'error',
                     title: 'Error',
                     text:'Error al registrarse',
-                    showConfirmButton: true
+                    showConfirmButton: true,
+                    customClass: {
+                        popup: 'custom-swal-popup'
+                      }
                 });
             }
         } catch (error) {
@@ -41,7 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon: 'error',
                 title: 'Error',
                 text:error,
-                showConfirmButton: true
+                showConfirmButton: true,
+                customClass: {
+                    popup: 'custom-swal-popup'
+                  }
             });
         }
     });

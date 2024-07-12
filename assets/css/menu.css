@@ -139,6 +139,13 @@ ul, li {
   text-decoration: none; 
 }
 
+/* SWEETALERT */
+
+.custom-swal-popup {
+    background-color: var(--negro);
+    color: var(--blanco);
+  }
+
 @media screen and (max-width: 1055px){
     .encabezado{
         padding-left: 1rem;

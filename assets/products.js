@@ -82,7 +82,10 @@ async function addToCartClicked(event) {
           title: 'Carrito',
           text: 'Producto agregado',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       }).then(() => {
         window.location.reload();
       });
@@ -91,8 +94,10 @@ async function addToCartClicked(event) {
           icon: 'error',
           title: 'Error',
           text: 'Error al cargar el producto',
-          showConfirmButton: false,
-          timer: 1500
+          showConfirmButton: true,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       }).then(() => {
         window.location.reload();
       });
@@ -102,8 +107,10 @@ async function addToCartClicked(event) {
         icon: 'error',
         title: 'Error',
         text: 'Error al cargar el carrito',
-        showConfirmButton: false,
-        timer: 1500
+        showConfirmButton: true,
+        customClass: {
+          popup: 'custom-swal-popup'
+        }
     }).then(() => {
       window.location.reload();
     });
@@ -161,7 +168,10 @@ document.addEventListener('click', async event => {
             title: 'Mensajes',
             text: 'Mensaje enviado',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         }).then(() => {
           modal.style.display = "none";
         });
@@ -171,8 +181,10 @@ document.addEventListener('click', async event => {
             icon: 'error',
             title: 'Error',
             text: 'Error al enviar le mensaje',
-            showConfirmButton: false,
-            timer: 1500
+            showConfirmButton: true,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         })
         }
       } catch (error) {
@@ -180,8 +192,10 @@ document.addEventListener('click', async event => {
           icon: 'error',
           title: 'Error',
           text: error,
-          showConfirmButton: false,
-          timer: 1500
+          showConfirmButton: true,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       })
       }
     };

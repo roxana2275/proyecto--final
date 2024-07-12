@@ -16,7 +16,10 @@ contactForm.addEventListener('submit', async (event) => {
             icon: 'error',
             title: 'Error',
             text:'Debe completar todos los campos',
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+                popup: 'custom-swal-popup'
+              }
         });
         return;
     }
@@ -47,7 +50,10 @@ contactForm.addEventListener('submit', async (event) => {
                 title: 'Formulario enviado',
                 text: 'Mensaje enviado',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
+                customClass: {
+                    popup: 'custom-swal-popup'
+                  }
             }).then(() => {
                 window.location.href = `/`;
 
@@ -57,7 +63,10 @@ contactForm.addEventListener('submit', async (event) => {
                 icon: 'error',
                 title: 'Error',
                 text:'Error al enviar el formulario',
-                showConfirmButton: true
+                showConfirmButton: true,
+                customClass: {
+                    popup: 'custom-swal-popup'
+                  }
             });
         }
     } catch (error) {
@@ -65,7 +74,10 @@ contactForm.addEventListener('submit', async (event) => {
             icon: 'error',
             title: 'Error',
             text:'error',
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+                popup: 'custom-swal-popup'
+              }
         });
     }
 });

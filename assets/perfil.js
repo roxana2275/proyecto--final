@@ -16,7 +16,10 @@ async function verificarUsuarioAutenticado() {
         icon: 'error',
         title: 'Error',
         text:'No esta logueado',
-        showConfirmButton: true
+        showConfirmButton: true,
+        customClass: {
+          popup: 'custom-swal-popup'
+        }
     });
     }
     const response = await fetch(`/api/perfilDeUsuario/${id}`, {
@@ -30,7 +33,10 @@ async function verificarUsuarioAutenticado() {
         icon: 'error',
         title: 'Error',
         text:'No esta logueado',
-        showConfirmButton: true
+        showConfirmButton: true,
+        customClass: {
+          popup: 'custom-swal-popup'
+        }
     });
     }
 
@@ -41,7 +47,10 @@ async function verificarUsuarioAutenticado() {
       icon: 'error',
       title: 'Error',
       text:error,
-      showConfirmButton: true
+      showConfirmButton: true,
+      customClass: {
+        popup: 'custom-swal-popup'
+      }
   });
     window.location.href = "/";
   }
@@ -123,7 +132,10 @@ export function crearTarjetaPerfil(data) {
           title: 'Formulario enviado',
           text: 'Usuario dado de baja',
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       });
         window.location.href = "/";
       })
@@ -134,7 +146,10 @@ export function crearTarjetaPerfil(data) {
           icon: 'error',
           title: 'Error',
           text:error,
-          showConfirmButton: true
+          showConfirmButton: true,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       });
       });
   };
@@ -195,7 +210,10 @@ export function crearTarjetaPerfil(data) {
             icon: 'error',
             title: 'Error',
             text:'Error en al coneccion',
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         });
         }
         return response.json();
@@ -212,7 +230,10 @@ export function crearTarjetaPerfil(data) {
                 icon: 'error',
                 title: 'Error',
                 text:'Error en la coneccion',
-                showConfirmButton: true
+                showConfirmButton: true,
+                customClass: {
+                  popup: 'custom-swal-popup'
+                }
             });
             }
             return response.json();
@@ -224,7 +245,10 @@ export function crearTarjetaPerfil(data) {
             icon: 'error',
             title: 'Error',
             text:error,
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         }));
         document.getElementById("editModal").style.display = "none";
       })
@@ -232,7 +256,10 @@ export function crearTarjetaPerfil(data) {
         icon: 'error',
         title: 'Error',
         text:error,
-        showConfirmButton: true
+        showConfirmButton: true,
+        customClass: {
+          popup: 'custom-swal-popup'
+        }
     }));
   };
 
@@ -250,7 +277,10 @@ export function crearTarjetaPerfil(data) {
             title: 'Formulario enviado',
             text: 'Imagen actualizada',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         }).then(() => {
           window.location.reload();
         });
@@ -260,7 +290,10 @@ export function crearTarjetaPerfil(data) {
             icon: 'error',
             title: 'Error',
             text:'Error al subir la imagen',
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         }).then(() => {
           window.location.reload();
         });
@@ -271,7 +304,10 @@ export function crearTarjetaPerfil(data) {
           icon: 'error',
           title: 'Error',
           text:error,
-          showConfirmButton: true
+          showConfirmButton: true,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       });
       }
     });
@@ -304,7 +340,10 @@ export function crearTarjetaPerfil(data) {
         icon: 'error',
         title: 'Error',
         text:'Las nuevas contraseñas no coinciden',
-        showConfirmButton: true
+        showConfirmButton: true,
+        customClass: {
+          popup: 'custom-swal-popup'
+        }
     });
       return;
     }
@@ -324,7 +363,10 @@ export function crearTarjetaPerfil(data) {
             icon: 'error',
             title: 'Error',
             text:'Error en al coneccion ',
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         });
         }
         return response.json();
@@ -335,7 +377,10 @@ export function crearTarjetaPerfil(data) {
             title: 'Formulario enviado',
             text: 'Contraseñia modificada',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         });
         document.getElementById("modalModificarContrasenia").style.display =
           "none";
@@ -380,14 +425,20 @@ export function publicacionesPerfil(data) {
               icon: 'error',
               title: 'Error',
               text:'Error en el servidor',
-              showConfirmButton: true
+              showConfirmButton: true,
+              customClass: {
+                popup: 'custom-swal-popup'
+              }
           });
           } else {
             Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text:'Error al borrar la publicacion',
-              showConfirmButton: true
+              icon: 'success',
+              title: 'Publicacion',
+              text:'La publicación ha sido borrada',
+              showConfirmButton: true,
+              customClass: {
+                popup: 'custom-swal-popup'
+              }
           }).then(() => {
             window.location.reload();
           });
@@ -397,7 +448,10 @@ export function publicacionesPerfil(data) {
           icon: 'error',
           title: 'Error',
           text:error,
-          showConfirmButton: true
+          showConfirmButton: true,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       }));
     };
   });
@@ -478,7 +532,10 @@ document.addEventListener('click', async event => {
             title: 'Formulario enviado',
             text: 'Respuesta enviada correctamente',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         }).then(() => {
           modal.style.display = "none";
           window.location.reload();
@@ -490,7 +547,10 @@ document.addEventListener('click', async event => {
             icon: 'error',
             title: 'Error',
             text:'Error en el envio',
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+              popup: 'custom-swal-popup'
+            }
         });
         }
       } catch (error) {
@@ -498,7 +558,10 @@ document.addEventListener('click', async event => {
           icon: 'error',
           title: 'Error',
           text:error,
-          showConfirmButton: true
+          showConfirmButton: true,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
       });
       }
     };

@@ -22,7 +22,10 @@ async function cargarCarrito(userId, token) {
                 icon: 'error',
                 title: 'Error',
                 text: errorText,
-                showConfirmButton: true
+                showConfirmButton: true,
+                customClass: {
+                    popup: 'custom-swal-popup'
+                  }
             });
             throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
         }
@@ -35,7 +38,10 @@ async function cargarCarrito(userId, token) {
             icon: 'error',
             title: 'Error',
             text: error,
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+                popup: 'custom-swal-popup'
+              }
         });
         console.log(error);
     }
@@ -73,7 +79,10 @@ async function borrarProducto(carrito_items_id) {
             icon: 'error',
             title: 'Error',
             text: "Usuario no autenticado",
-            showConfirmButton: true
+            showConfirmButton: true,
+            customClass: {
+                popup: 'custom-swal-popup'
+              }
         });
         window.location.href = "/";
         return;
@@ -94,7 +103,10 @@ async function borrarProducto(carrito_items_id) {
                 icon: 'error',
                 title: 'Error',
                 text: errorText,
-                showConfirmButton: true
+                showConfirmButton: true,
+                customClass: {
+                    popup: 'custom-swal-popup'
+                  }
             });
             throw new Error(`HTTP error! Status: ${response.status} - ${errorText}`);
         }
