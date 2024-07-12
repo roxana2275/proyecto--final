@@ -8,7 +8,6 @@ const connection = mysql.createConnection({
     user:process.env.user,
     password:process.env.password,
     database:process.env.database,
-    port: process.env.port
 });
 connection.connect((err)=>{
     if(err){
