@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     host:'mysql-figuriando.alwaysdata.net',
     user:process.env.user,
     password:process.env.password,
-    //database:process.env.database,
+    database:process.env.database,
     port: process.env.port
 });
 connection.connect((err)=>{
